@@ -5,7 +5,9 @@ const mongoose = require('mongoose')
 const methodOverRide = require('method-override')
 const models = require('./models/product')
 const categoryData = require('./public/category')
-mongoose.connect('mongodb://127.0.0.1:27017/products', { useNewUrlParser: true, useUnifiedTopology: true })
+//以下 如有私人區域網路 則用ip 位置
+//如沒有 則用 localhost 取代
+mongoose.connect('mongodb://localhost:27017/newProduct', { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 const db = mongoose.connection;
@@ -25,16 +27,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/products', async (req, res) => {
   const categoryClass = req.query.category
-  console.log(categoryClass)
+  const products = categoryClass ? await models.find({ category: categoryClass }) : await models.find({})
   if (categoryClass) {
-    const products = await models.find({ category: categoryClass, All : category})
-    res.render('./products/index', { products })
+    res.render('./products/index', { products, All: 'category' })
   } else {
-    const products = await models.find({})
-    res.render('./products/index', { products , All: All})
+    res.render('./products/index', { products, All: 'ALL' })
   }
-
-
 })
 
 app.get('/products/new', (req, res) => {
