@@ -9,7 +9,9 @@
 </head>
 
 <body>
-  <h2>Product list</h2>
+  <h2>
+    <%=All%> list
+  </h2>
   <ul>
     <% for(let product of products) { %>
       <li>
@@ -19,6 +21,7 @@
       </li>
       <%}%>
   </ul>
+  <div><a href="/products/new">add new</a></div>
 </body>
 
 </html>

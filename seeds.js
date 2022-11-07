@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const product = require('./models/product')
-mongoose.connect('mongodb://localhost:27017/newProduct', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://127.0.0.1:27017/products', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection;
 db.on('error', () => {

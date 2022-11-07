@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const categoryData = require('../public/category')
 const productSchma = mongoose.Schema({
   name : {
     type: String,
@@ -12,7 +12,7 @@ const productSchma = mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['vagetable', 'fruit', 'meat']
+    enum: categoryData
   }
 })
 

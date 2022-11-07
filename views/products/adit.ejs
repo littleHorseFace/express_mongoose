@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="/products/<%=aditProduct._id%>?_method=PUT" method="POST">
+    <section>
+      <label for="name">name</label>
+      <input type="text" name="name" id="name" placeholder="enter name" value="<%=aditProduct.name%>">
+    </section>
+    <section>
+      <label for="price">price</label>
+      <input type="text" name="price" id="price" placeholder="enter pricr" value="<%=aditProduct.price%>">
+    </section>
+    <section>
+      <label for="category">category</label>
+      <select name="category" id="category">
+        <!-- <option value="fruit">fruit</option>
+        <option value="vagetable">vagetable</option>
+        <option value="meat">meat</option> -->
+        <%for(let category of categoryData){%>
+          <option value="<%=category%>" <%=category===aditProduct.category? 'selected' : '' %>>
+            <%=category%>
+          </option>
+          <%}%>
+      </select>
+    </section>
+    <section>
+      <button type="submit">submit</button>
+    </section>
+    <a href="/products">home</a>
+    <a href="/products/<%=aditProduct._id%>">cancel</a>
+</body>
+
+</html>

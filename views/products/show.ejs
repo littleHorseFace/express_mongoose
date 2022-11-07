@@ -17,10 +17,18 @@
     this price : <%=showProduct.price%>
   </li>
   <li>
-    this category : <%=showProduct.category%>
+    this category : <a href="/products?category=<%=showProduct.category%>">
+      <%=showProduct.category%>
+    </a>
   </li>
 
   <a href="/products">home</a>
+  <a href="/products/<%=showProduct._id%>/adit">adit</a>
+  <!-- 因a 標籤無法 只能用GET方法 所以要用form表單去提交不同形式的提交方式 ex: post delete put -->
+  <form action="/products/<%=showProduct._id%>?_method=DELETE" method="post">
+    <button type="submit">delete</button>
+  </form>
+
 </body>
 
 </html>
